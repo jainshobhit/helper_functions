@@ -11,7 +11,7 @@ source *env name*/bin/activate
 ```
 - Python3
 ```
-python3 -m *env name*
+python3 -m venv *env name*
 source *env name*/bin/activate
 ```
 - Jupyter
