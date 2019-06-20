@@ -11,7 +11,8 @@ source *env name*/bin/activate
 ```
 - Python3
 ```
-python3 -m venv *env name*
+sudo pip3 install virtualenv 
+virtualenv -p python3 myenv
 source *env name*/bin/activate
 ```
 - Jupyter
