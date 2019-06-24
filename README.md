@@ -71,3 +71,8 @@ To compile using static library so that the compiler knows to link it later, use
 For eg. to connect with OpenCV libraries: `g++ foo.cpp -L/path/to/opencv/lib -lopencv_core -lopencv_imgcodecs`. If you want to use further functions of OpenCV not found in these libraries, you might have to link against additional OpenCV libraries.
 
 If it is a frequently used library, you can add the path to LD_LIBRARY_PATH and the compiler will automatically load the libraries from there.
+
+## Git
+[Merging & Branching](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+
+[Overwriting local changes](https://stackoverflow.com/questions/1125968/how-do-i-force-git-pull-to-overwrite-local-files)
