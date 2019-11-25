@@ -43,6 +43,8 @@ To import module from another directory: `os.sys.path.append('../ModelFiles/ResN
 ## Shell
 to find a pattern in all files of a directory: ` grep -rnw /path/to/directory -e "pattern" `
 
+Install CUDA and nvidia-drivers: `https://linoxide.com/linux-how-to/install-cuda-ubuntu/` (check compatibility of driver with the CUDA version before proceeding) Make sure to download compatible runfile from nvidia website
+
 Check CUDA version: `cat /usr/local/cuda/version.txt`
 
 check cuDNN version: `cat /usr/include/x86_64-linux-gnu/cudnn_v*.h | grep CUDNN_MAJOR -A 2 || cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2`
