@@ -78,3 +78,36 @@ If it is a frequently used library, you can add the path to LD_LIBRARY_PATH and 
 [Merging & Branching](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 
 [Overwriting local changes](https://stackoverflow.com/questions/1125968/how-do-i-force-git-pull-to-overwrite-local-files)
+
+## Django Server
+`python manage.py migrate`
+`python manage.py makemigrations`
+`python manage.py createsuperuser`
+`python manage.py collectstatic`
+`python manage.py runserver 0.0.0.0:8000`
+
+## Gunicorn
+Edit file - `sudo vi /etc/systemd/system/gunicorn.service`
+
+After making changes to the gunicorn service file -
+`sudo systemctl daemon-reload`
+`sudo systemctl restart gunicorn`
+
+Check status - `systemctl status gunicorn.service`
+
+Check logs - `sudo journalctl -u gunicorn`
+
+Etc.
+`gunicorn bizinbiz_backend/bizinbiz_backend.wsgi:application --bind 0.0.0.0:8000`
+
+## Nginx
+Edit file - `sudo vi /etc/nginx/sites-available/bizinbiz_backend`
+
+Create symlink - `sudo ln -sf /etc/nginx/sites-available/bizinbiz_backend /etc/nginx/sites-enabled/`
+
+Verify file - `sudo nginx -t`
+
+Restart nginx - `sudo systemctl restart nginx`
+
+Check status - `systemctl status nginx`
+
