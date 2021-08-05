@@ -86,6 +86,11 @@ If it is a frequently used library, you can add the path to LD_LIBRARY_PATH and 
 `python manage.py collectstatic`
 `python manage.py runserver 0.0.0.0:8000`
 
+**For Production Server**
+1. Do not commit `__pycache__` folder
+2. On the server, run the command `DJANGO_SETTINGS=prod SECRET_KEY=****** python manage.py migrate`. Do not run the `makemigrations` command.
+3. Also, DO NOT make any changes to the authentication model. If yes, then try to migrate on the prod server asap and see if it goes through. If it doesn't, then just roll back.
+
 ## Gunicorn
 Edit file - `sudo vi /etc/systemd/system/gunicorn.service`
 
