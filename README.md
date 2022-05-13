@@ -91,28 +91,45 @@ If it is a frequently used library, you can add the path to LD_LIBRARY_PATH and 
 2. On the server, run the command `DJANGO_SETTINGS=prod SECRET_KEY=****** python manage.py migrate`. Do not run the `makemigrations` command.
 3. Also, DO NOT make any changes to the authentication model. If yes, then try to migrate on the prod server asap and see if it goes through. If it doesn't, then just roll back.
 
+## System Process - systemctl
+
+Files are at `/etc/systemd/system/`
+
+Start Service - `sudo systemctl start service`
+
+Enable Service (used for the first time - creates symlinks) - `sudo systemctl enable service`
+
+Check Status - `sudo systemctl status service`
+
+Restart Service - `sudo systemctl restart service`
+
+Check logs - `sudo journalctl -u service`
+
+Stop Service - `sudo systemctl stop service`
+
+Disable Service (delink symlinks) - `sudo systemctl disable service`
+
+
 ## Gunicorn
-Edit file - `sudo vi /etc/systemd/system/gunicorn.service`
 
-After making changes to the gunicorn service file -
-`sudo systemctl daemon-reload`
-`sudo systemctl restart gunicorn`
+All the above `systemctl` commands work here
 
-Check status - `systemctl status gunicorn.service`
+Edit file - `sudo vi /etc/systemd/system/app.service`
 
-Check logs - `sudo journalctl -u gunicorn`
+Django Application - `gunicorn app.wsgi:application --bind 0.0.0.0:8000`
 
-Etc.
-`gunicorn bizinbiz_backend/bizinbiz_backend.wsgi:application --bind 0.0.0.0:8000`
+Flask Application - `gunicorn --bind 0.0.0.0:5000 wsgi:app`
+
+After making changes to the gunicorn service file - `sudo systemctl daemon-reload`
 
 ## Nginx
-Edit file - `sudo vi /etc/nginx/sites-available/bizinbiz_backend`
 
-Create symlink - `sudo ln -sf /etc/nginx/sites-available/bizinbiz_backend /etc/nginx/sites-enabled/`
+Edit file - `sudo vi /etc/nginx/sites-available/service`
+
+Create symlink - `sudo ln -sf /etc/nginx/sites-available/service /etc/nginx/sites-enabled/`
 
 Verify file - `sudo nginx -t`
 
 Restart nginx - `sudo systemctl restart nginx`
 
 Check status - `systemctl status nginx`
-
